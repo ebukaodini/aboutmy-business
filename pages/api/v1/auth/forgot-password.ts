@@ -4,7 +4,7 @@ import { method } from "../../../../middlewares/request-method";
 import { badRequest, serverError, success } from "../../../../middlewares/response-helpers";
 import { Auth, IAuth } from "../../../../models/auth";
 import { connectDB } from "../../../../models/connect";
-import { User } from "../../../../models/users";
+import { User } from "../../../../models/user";
 import { generateHash } from "../../../../utils/generate-hash";
 import { generateAuthToken } from "../../../../utils/generate-token";
 

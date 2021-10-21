@@ -27,7 +27,6 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 
               // generate unique token for user
               let authToken = await generateAuthToken();
-              console.log(authToken)
               // get expiration date
               let tokenExpiresBy = new Date();
               tokenExpiresBy.setUTCMinutes(tokenExpiresBy.getMinutes() + 5);
