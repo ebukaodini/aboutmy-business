@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { useState } from 'react'
 import { Edit2, Edit3 } from 'react-feather';
 import PageLayout from '../../components/page-layout'
-import getGravatarURL from '../../utils/helpers/get-gravatar-image';
+import getGravatarURL from '../../utils/get-gravatar-image';
 
 
 export default function Profile() {
