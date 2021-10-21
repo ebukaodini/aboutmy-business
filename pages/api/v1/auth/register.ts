@@ -4,7 +4,8 @@ import { connectDB } from "../../../../models/connect";
 import { method } from "../../../../middlewares/request-method";
 import { bodyParseUrlEncoded } from "../../../../middlewares/parse-body";
 import { badRequest, serverError, success } from "../../../../middlewares/response-helpers";
-import { User } from "../../../../models/users";
+import { User } from "../../../../models/user";
+import getGravatarURL from "../../../../utils/get-gravatar-image";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
 
@@ -22,18 +23,17 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       // initiate new instance of the auth model
       const auth = new Auth();
       auth.email = req.body.email;
-      auth.is
       auth.hashPassword(req.body.password);
 
       // save auth
       auth.save()
-        .then(auth => {
+        .then(_ => {
 
           // create a new user
-          let user = new User({ email: req.body.email });
+          let user = new User({ email: req.body.email, avatar: getGravatarURL(req.body.email) });
 
           return user.save()
-            .then(user => {
+            .then(_ => {
               return success(res, 'User registration successful.');
             }).catch(err => {
               return badRequest(res, err.message)
