@@ -1,7 +1,7 @@
 // const md5 = require( 'md5' );
 import md5 from 'md5';
 
-export default function getGravatarURL( email: string ) {
+export default function getGravatarURL( email: string ): string {
   // Trim leading and trailing whitespace from
   // an email address and force all characters
   // to lower case
